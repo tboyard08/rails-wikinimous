@@ -7,3 +7,17 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+# Clean database
+Article.destroy_all
+
+# Generate 10 fake articles
+10.times do
+  article = Article.new(
+    title: Faker::Book.title,
+    content: Faker::Lorem.paragraph(sentence_count: 5)
+  )
+
+  article.save!
+end
+
+puts "10 fake articles created successfully!"
